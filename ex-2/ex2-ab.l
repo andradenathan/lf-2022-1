@@ -26,20 +26,28 @@ Return 1 if you are done or 0 if more processing is required.*/
 int yywrap(void) { return 1; }
 
 int main() {
+    FILE* fp = fopen("output-ex2-ab.txt", "ab+");
+
     switch(yylex()) {
         case senha_valida:
             printf("A senha %s pertence a linguagem\n", yytext);
+            fprintf(fp, "SENHA %s - VALIDO\n", yytext);
             break;
         case tel_valido:
             printf("O telefone %s e valido\n", yytext);
+            fprintf(fp, "TELEFONE %s - VALIDO\n", yytext);
             break;
         case invalido:
             printf("%s nao e valido para nenhuma linguagem\n", yytext);
+            fprintf(fp, "%s - INVALIDO\n", yytext);
             break;
         default:
             printf("%s nao pertence a nenhuma linguagem\n", yytext);
+            fprintf(fp, "%s - INVALIDO\n", yytext);
             break;
     }
 
+    fclose(fp);
+    
     return 0;
 }

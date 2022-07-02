@@ -25,12 +25,15 @@ Return 1 if you are done or 0 if more processing is required.*/
 int yywrap(void) { return 1; }
 
 int main() {
+    FILE* fp = fopen("output-ex1-d.txt", "ab+");
     if((TOKEN) yylex() == valido) {
         printf("Valido\n");
         printf("O numero %s pertence a linguagem\n", yytext);
+        fprintf(fp, "%s - VALIDO\n", yytext);
     } else {
         printf("Invalido\n");
         printf("O numero %s nao pertence a linguagem\n", yytext);
+        fprintf(fp, "%s - INVALIDO\n", yytext);
     }
     
     return 0;
