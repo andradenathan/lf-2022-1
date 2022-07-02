@@ -8,7 +8,7 @@ typedef enum _TOKEN {
 
 %}
 
-VALIDO (\")([\.\,\;\!\?\-\:]+)(\")
+VALIDO (\")([a-zA-Z0-9\n\.\,\;\!\?\-\:]+)(\")
 INVALIDO (.)
 
 %%

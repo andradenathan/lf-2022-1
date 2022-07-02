@@ -3,3 +3,11 @@ TEXTO " - INVALIDO
 TEXTO "?" - VALIDO
 TEXTO ";" - VALIDO
 TEXTO "," - VALIDO
+TEXTO "o" - VALIDO
+TEXTO "oi" - VALIDO
+TEXTO "asdasf" - VALIDO
+TEXTO "asf
+
+
+k
+" - VALIDO
