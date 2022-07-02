@@ -9,7 +9,7 @@ typedef enum _TOKEN {
 
 %}
 
-VALIDO [a-z][A-Z]
+VALIDO [a-zA-Z]
 INVALIDO (.|[\n])
 
 %%
