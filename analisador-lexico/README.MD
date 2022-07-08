@@ -12,4 +12,4 @@ Estado 2: a -> 1, b -> 3, c -> 3<br />
 Estado 3: a -> 4, b -> 3, c -> 4<br />
 Estado 4 (Final): a -> -1, b -> -1, c -> -1<br />
 
-Para executar o programa, digite no terminal: main.py <nome_do_arquivo> <palavra>.
+Para executar o programa, digite no terminal: main.py <nome_do_arquivo\> <palavra\>.
