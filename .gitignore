@@ -1,2 +1,3 @@
 *.out
 *.yy.c
+/analisador-lexico/src/__pycache__
