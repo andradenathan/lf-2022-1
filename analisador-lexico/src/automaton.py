@@ -11,7 +11,6 @@ class Automaton:
     def transition(self, state, character):
         self.lexem += character
         pointer = self.states[state].get(character)
-        
         if pointer != -1:
             self.current_state = self.states[state].get(character, -1)
         else:
@@ -30,6 +29,6 @@ class Automaton:
             self.lexem = self.lexem[:-1]
         
         if self.current_state in self.final_states:
-            return self.current_state, self.lexem
+            return "Valid"
         
-        return self.current_state, self.lexem
+        return "Rejected"
