@@ -32,4 +32,4 @@ class Automaton:
         if self.current_state in self.final_states:
             return self.current_state, self.lexem
         
-        return self.current_state, self.lexem[-1]
+        return self.current_state, self.lexem

@@ -9,17 +9,42 @@
 from sys import argv
 from automaton import *
 
-def main():
-    states = [
-        {'a': 1, 'b': 1, 'c': -1},
-        {'a': 1, 'b': 3, 'c': 3},
-        {'a': -1, 'b': 3, 'c': 3},
-        {'a': 4, 'b': 3, 'c': 4},
-        {'a': -1, 'b': -1, 'c': -1}
-    ]
+def format_states(states):
+    data = []
+    final_state = []
+    dict_data = {}
+    
+    for idx, line in enumerate(states):
+        if "Final" in line:
+            final_state.append(idx)
+        
+        line = str.replace(line, "->", ":")
+        line = line.replace(" ", "")
+        line = line.replace(f"Estado{idx}(Inicial):", '')
+        line = line.replace(f"Estado{idx}(Final):", '')
+        line = line.replace(f"Estado{idx}:", '')
+        line = line.replace("\n", '')
+        line_dict = line.split(",")
+        
+        for elem in line_dict:
+            elem = elem.split(':')
+            dict_data[elem[0]] = int(elem[1])
+        
+        data.append(dict_data)
 
-    automaton = Automaton(states, ['a', 'b', 'c'], 0, [4])
-    word = "acbbbaagg"
+    return data, final_state
+
+def main():
+    if len(argv) != 3:
+        print("Erro ao especificar a entrada do programa")
+        print("Tente novamente com: main.py <arquivo> <palavra>")
+        exit(1)
+        
+    file = open(argv[1], "r")
+    states, final_state = format_states(file.readlines())
+    automaton = Automaton(states, ['a', 'b', 'c'], 0, final_state)
+
+    word = argv[2]
     current_state = 0
 
     for w in word:
