@@ -1,4 +1,0 @@
-Estado 0 (Inicial): a -> 1, b -> 2, c -> 3
-Estado 1: a -> 1, b -> 2, c -> 3
-Estado 2: a -> 1, b -> 2, c -> 3
-Estado 3 (Final): a -> -1, b -> -1, c -> -1
