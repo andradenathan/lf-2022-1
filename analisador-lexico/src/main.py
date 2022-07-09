@@ -10,6 +10,10 @@ from sys import argv
 from automaton import *
 
 def format_states(states):
+    """
+    Formatação dos estados recebidos no txt para adequação no dicionário
+    que servirá como a tabela para transicionar os estados do autômato.
+    """
     data = []
     final_state = []
     
