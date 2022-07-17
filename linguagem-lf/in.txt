@@ -1,11 +1,17 @@
 fn main() { 
     int _teste = 0; 
     float teste = 1.5;
+    var novo_teste = true;
 
     if(_teste == teste) {
         return 1;
     } else {
         return _teste;
+    }
+
+    // Faz o teste de comentario
+    while(novo_teste) {
+        novo_teste = false;
     }
 
     return 0;

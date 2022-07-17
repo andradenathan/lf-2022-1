@@ -26,7 +26,9 @@ typedef enum Token {
     _close_brack = 19,
     _point = 20,
     _bool_type = 21,
-    _eol = 22
+    _var = 22,
+    _const = 23,
+    _eol = 24
 } Token;
 %}
 
@@ -44,6 +46,8 @@ INT [1-9]+[0-9]*|0
 FLOAT [0-9].[0-9]+
 EQUAL =
 OP [\+]|[\*]|==
+VAR [vV][aA][rR]
+CONST [cC][oO][nN][sS][tT]
 ID [a-zA-Z_][a-zA-Z0-9_]*
 COMMENT ("/*"([^*]|\*+[^*/])*\*+"/")|"//".*
 OPEN_PAR [\(]
@@ -67,6 +71,8 @@ WHITESPACE [ \s\t\n]
 {BOOL_TYPE} {return _bool_type;}
 {TRUE} {return _true;}
 {FALSE} {return _false;}
+{VAR} {return _var;}
+{CONST} {return _const;}
 {ID} {return _id;}
 {INT} {return _int;}
 {FLOAT} {return _float;}
@@ -111,7 +117,9 @@ char* find_token_by_type(int token_type) {
         case 19: return "CLOSE_BRACK"; break;
         case 20: return "POINTS"; break;
         case 21: return "BOOL"; break;
-        case 22: return "EOL"; break;
+        case 22: return "VAR"; break;
+        case 23: return "CONST"; break;
+        case 24: return "EOL"; break;
         default: return "UNKNOWN"; break;
     }
 }
