@@ -1,4 +1,12 @@
-fn main() {
-    int teste = 0;
-    return teste;
+fn main() { 
+    int _teste = 0; 
+    float teste = 1.5;
+
+    if(_teste == teste) {
+        return 1;
+    } else {
+        return _teste;
+    }
+
+    return 0;
 }
