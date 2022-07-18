@@ -19,7 +19,7 @@ typedef enum Token {
     _return = 12,
     _int_type = 13,
     _float_type = 14,
-    _equal = 15,
+    _attribution = 15,
     _open_par = 16,
     _close_par = 17,
     _open_brack = 18,
@@ -44,7 +44,7 @@ TRUE [tT][rR][uU][eE]
 FALSE [fF][aA][lL][sS][eE]
 INT [1-9]+[0-9]*|0
 FLOAT [0-9].[0-9]+
-EQUAL =
+ATTRIBUTION =
 OP [\+]|[\*]|==
 VAR [vV][aA][rR]
 CONST [cC][oO][nN][sS][tT]
@@ -76,7 +76,7 @@ WHITESPACE [ \s\t\n]
 {ID} {return _id;}
 {INT} {return _int;}
 {FLOAT} {return _float;}
-{EQUAL} {return _equal;}
+{ATTRIBUTION} {return _attribution;}
 {OP} {return _op;}
 {COMMENT} {return _comment;}
 {OPEN_PAR} {return _open_par;}
@@ -86,7 +86,7 @@ WHITESPACE [ \s\t\n]
 {EOL} {return _eol;}
 {POINTS} {return _point;}
 {WHITESPACE}+
-. {printf("Error: Unknown character: %c\n", yytext[0]); return invalid;}
+. {return invalid;}
 
 %%
 
@@ -110,7 +110,7 @@ char* find_token_by_type(int token_type) {
         case 12: return "RETURN"; break;
         case 13: return "INT_TYPE"; break;
         case 14: return "FLOAT_TYPE"; break;
-        case 15: return "EQUAL"; break;
+        case 15: return "ATTRIBUTION"; break;
         case 16: return "OPEN_PAR"; break;
         case 17: return "CLOSE_PAR"; break;
         case 18: return "OPEN_BRACK"; break;
