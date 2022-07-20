@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Autores: Nathan Andrade | Bruna Ribeiro | Milton Quillinan
+
 int comment = 0;
 
 typedef enum Token {
