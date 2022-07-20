@@ -23,4 +23,4 @@ Observações
 
 Os comentários não são salvos no arquivo de saída do programa, mas são ignorados totalmente pelo analisador léxico, quando aberto e fechado corretamente (para o caso de aninhamento de comentário).
 
-Os números inteiros não podem ser começados com 0, se for o caso, o 0 e o número a seguir serão identificados como o restante de números inteiros.
+Os números inteiros não podem ser começados com 0, se for o caso, o 0 e o número restante serão identificados como números inteiros.
