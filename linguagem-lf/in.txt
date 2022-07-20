@@ -1,8 +1,12 @@
 fn main() { 
     int _teste = 0; 
+    int teste2 = 0.50;
     float teste = 1.5;
     var novo_teste = true;
 
+    /*
+        assim que se define um if
+    */
     if(_teste == teste) {
         return 1;
     } else {

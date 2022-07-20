@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int comment = 0;
+
 typedef enum Token {
     eof = -1, 
     invalid = 0,
@@ -30,7 +32,9 @@ typedef enum Token {
     _const = 23,
     _eol = 24
 } Token;
-%}
+%} 
+
+%x STATE_COMMENT
 
 IF [iI][fF]
 ELSE [eE][lL][sS][eE]
@@ -42,14 +46,13 @@ FLOAT_TYPE [fF][lL][oO][aA][tT]
 BOOL_TYPE [bB][oO][oO][lL]
 TRUE [tT][rR][uU][eE]
 FALSE [fF][aA][lL][sS][eE]
-INT [1-9]+[0-9]*|0
-FLOAT [0-9].[0-9]+
+FLOAT [0-9][.][0-9]+
+INT 0|[1-9][0-9]*
 ATTRIBUTION =
 OP [\+]|[\*]|==
 VAR [vV][aA][rR]
 CONST [cC][oO][nN][sS][tT]
 ID [a-zA-Z_][a-zA-Z0-9_]*
-COMMENT ("/*"([^*]|\*+[^*/])*\*+"/")|"//".*
 OPEN_PAR [\(]
 CLOSE_PAR [\)]
 OPEN_BRACK [\{]
@@ -61,6 +64,8 @@ WHITESPACE [ \s\t\n]
 %%
 
 <<EOF>> {return eof;}
+
+<INITIAL>{
 {FUNCTION} {return _function;}
 {IF} {return _if;}
 {ELSE} {return _else;}
@@ -77,8 +82,9 @@ WHITESPACE [ \s\t\n]
 {INT} {return _int;}
 {FLOAT} {return _float;}
 {ATTRIBUTION} {return _attribution;}
+"/*"    { BEGIN(STATE_COMMENT); }
+"//".* ;
 {OP} {return _op;}
-{COMMENT} {return _comment;}
 {OPEN_PAR} {return _open_par;}
 {CLOSE_PAR} {return _close_par;}
 {OPEN_BRACK} {return _open_brack;}
@@ -87,6 +93,18 @@ WHITESPACE [ \s\t\n]
 {POINTS} {return _point;}
 {WHITESPACE}+
 . {return invalid;}
+}
+
+<STATE_COMMENT>{
+"/*"           { ++comment; }
+"*/"        { if (comment) --comment;
+                else { BEGIN(INITIAL); } }
+"*"+          
+[^/*\n]+        
+"//".*         
+[/]            
+\n                 
+}
 
 %%
 
@@ -124,19 +142,19 @@ char* find_token_by_type(int token_type) {
     }
 }
 
-int main(void) {
+int main(int argc, char* argv[]) {
     int token_type = 0;
     
-    FILE *in = fopen("./in.txt", "r");
+    FILE *in = fopen(argv[1], "r");
     yyin = in;
 
     FILE *out = fopen("./out.txt", "w"); 
-    
-    while((token_type = yylex()) != eof) {
+
+    while((token_type = yylex()) != eof) 
         fprintf(out, "[%s, %s]\n", yytext, find_token_by_type(token_type));
-    }
 
     fclose(in);
     fclose(out);
+    
     return 0;
 }
