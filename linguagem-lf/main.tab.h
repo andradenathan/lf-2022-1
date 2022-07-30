@@ -70,7 +70,16 @@ extern int yydebug;
     VAR = 271,                     /* VAR  */
     CONST = 272,                   /* CONST  */
     ID = 273,                      /* ID  */
-    COLON = 274                    /* COLON  */
+    COLON = 274,                   /* COLON  */
+    COMMA = 275,                   /* COMMA  */
+    WHILE = 276,                   /* WHILE  */
+    FUNCTION = 277,                /* FUNCTION  */
+    RETURN = 278,                  /* RETURN  */
+    INT_TYPE = 279,                /* INT_TYPE  */
+    FLOAT_TYPE = 280,              /* FLOAT_TYPE  */
+    BOOL_TYPE = 281,               /* BOOL_TYPE  */
+    TRUE = 282,                    /* TRUE  */
+    FALSE = 283                    /* FALSE  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -79,13 +88,13 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 8 "main.y"
+#line 10 "main.y"
 
     char* name;
     int ival;
     float fval;
 
-#line 89 "main.tab.h"
+#line 98 "main.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
