@@ -11,7 +11,6 @@ Especificações
 - Variáveis e constantes;
 - Dois pontos e ponto e vírgula.
 
-<br/>
 
 Observações
 
@@ -34,6 +33,6 @@ gcc -o out lex.yy.c parser.tab.c -lfl
 ```
 
 ### Autores
-Bruna Ribeiro @brunapr<br/>
-Milton Quillinan @Quillinan<br/>
-Nathan Andrade @andradenathan
+- Bruna Ribeiro - 118171816<br/>
+- Milton Quillinan - 118144649<br/>
+- Nathan Andrade - 120082390
