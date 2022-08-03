@@ -1,5 +1,5 @@
 *.out
 *.yy.c
-/linguagem-lf/*.tab.c
-/linguagem-lf/*.tab.h
+*.tab.c
+*.tab.h
 /automato-finito-deterministico/src/__pycache__
