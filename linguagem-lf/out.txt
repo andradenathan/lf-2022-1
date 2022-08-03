@@ -1,0 +1,64 @@
+type -> int
+args -> teste : type
+params -> args
+type -> int
+type -> int
+numtype -> 0
+number -> 0
+expr -> number
+assign -> var elemento : type = expr
+line -> assign ;
+type -> int
+numtype -> 1
+number -> 1
+expr -> number
+assign -> const a : type = expr
+line -> assign ;
+numtype -> 1
+number -> 1
+expr -> number
+condition -> a == expr
+numtype -> 0
+number -> 0
+expr -> number
+return -> return expr ;
+block -> return
+while -> while ( condition ) block
+line -> while_
+numtype -> 0
+number -> 0
+expr -> number
+condition -> elemento == expr
+numtype -> 2
+number -> 2
+expr -> number
+return -> return expr ;
+lines -> return
+code_block -> { lines }
+block -> code_block
+numtype -> 3
+number -> 3
+expr -> number
+return -> return expr ;
+lines -> return
+code_block -> { lines }
+code_else -> code_block
+if -> if( condition ) block else code_else
+line -> if_
+numtype -> 1
+number -> 1
+expr -> number
+numtype -> 2
+number -> 2
+expr -> number
+expr -> expr + expr
+return -> return expr ;
+lines -> return
+lines -> line lines
+lines -> line lines
+lines -> line lines
+lines -> line lines
+code_block -> { lines }
+function -> fn main ( params teste ) type code_block
+line -> function_ ;
+program -> line
